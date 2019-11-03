@@ -5,6 +5,7 @@
 #include <boost/asio.hpp>
 #include <boost/array.hpp>
 
+//shortens lines just write tcp instead of boost::asio::ip::tcp
 using boost::asio::ip::tcp;
 
 class session {
