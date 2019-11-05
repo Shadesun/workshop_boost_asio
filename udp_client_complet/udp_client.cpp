@@ -17,6 +17,7 @@ void client::write()
 void client::handle_write(const boost::system::error_code &error, size_t got)
 {
     if (!error) {
+        _input_buffer.consume(_input_buffer.data().size());
         read_inupt();
     }
     else
@@ -50,7 +51,7 @@ void client::handle_read(const boost::system::error_code &error, size_t got)
 {
     if (!error) {
         std::cout << _data.data();
-        read_inupt();
+        read();
     }
     else
         std::cerr << error.message() << std::endl;

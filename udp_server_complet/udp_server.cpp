@@ -19,14 +19,13 @@ void server::read() {
 
 void server::handle_read(const boost::system::error_code &e, size_t bytes_recvd)
 {
-    if (!e && bytes_recvd > 0) {
+    if (!e) {
         //writes back to the user
         std::cout << _data.data();
         write();
     }
     else {
         std::cerr << e.message() << std::endl;
-        read();
     }
 }
 
