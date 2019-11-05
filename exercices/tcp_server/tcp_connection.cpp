@@ -1,6 +1,6 @@
 #include "tcp_connection.hpp"
 
-session::session(boost::asio::io_service &io_service) : _socket(io_service), _data{0}
+session::session(boost::asio::io_service &io_service) : _socket(io_service)
 {}
 
 tcp::socket &session::getSocket()

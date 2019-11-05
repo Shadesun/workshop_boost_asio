@@ -14,14 +14,23 @@ include_directories(${BOOST_ROOT})
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${BOOST_ROOT}/stage/lib)
 
-add_executable(tcp_erver
+add_executable(tcp_server
 	tcp_server_complet/tcp_connection.cpp
 	tcp_server_complet/tcp_connection.hpp
 	tcp_server_complet/tcp_server.cpp
 	tcp_server_complet/tcp_server.hpp)
 
-TARGET_LINK_LIBRARIES(tcp_erver ${Boost_LIBRARIES})
-TARGET_LINK_LIBRARIES(tcp_erver ${CMAKE_THREAD_LIBS_INIT})
+TARGET_LINK_LIBRARIES(tcp_server ${Boost_LIBRARIES})
+TARGET_LINK_LIBRARIES(tcp_server ${CMAKE_THREAD_LIBS_INIT})
+
+add_executable(tcp_client
+	tcp_client_complet/tcp_client.cpp
+	tcp_client_complet/tcp_client.hpp
+	tcp_client_complet/tcp_connection.cpp
+	tcp_client_complet/tcp_connection.hpp)
+
+TARGET_LINK_LIBRARIES(tcp_client ${Boost_LIBRARIES})
+TARGET_LINK_LIBRARIES(tcp_client ${CMAKE_THREAD_LIBS_INIT})
 
 add_executable(udp_server
 	udp_server_complet/udp_server.cpp
@@ -29,3 +38,10 @@ add_executable(udp_server
 
 TARGET_LINK_LIBRARIES(udp_server ${Boost_LIBRARIES})
 TARGET_LINK_LIBRARIES(udp_server ${CMAKE_THREAD_LIBS_INIT})
+
+add_executable(udp_client
+	udp_client_complet/udp_client.cpp
+	udp_client_complet/udp_client.hpp)
+
+TARGET_LINK_LIBRARIES(udp_client ${Boost_LIBRARIES})
+TARGET_LINK_LIBRARIES(udp_client ${CMAKE_THREAD_LIBS_INIT})

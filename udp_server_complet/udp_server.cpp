@@ -1,6 +1,8 @@
 #include "udp_server.hpp"
 
-server::server(boost::asio::io_service& io_service, short port, const std::string &ip): _ios(io_service), _socket(io_service, udp::endpoint(boost::asio::ip::address::from_string(ip), port))
+server::server(boost::asio::io_service& io_service, short port, const std::string &ip)
+: _ios(io_service),
+_socket(io_service, udp::endpoint(boost::asio::ip::address::from_string(ip), port)), _data{0}
 {
     //starts reading data
     read();
@@ -51,11 +53,11 @@ void server::handle_write(const boost::system::error_code &e, size_t bytes_sent)
 int main(int argc, char **argv)
 {
     boost::asio::io_service ios;
-    short port = 4243;
+    short port = 4244;
     std::string ip = "127.0.0.1";
 
     try {
-        server s(ios, 4243, ip);
+        server s(ios, port, ip);
         ios.run();
     }
     catch (std::exception &e) {

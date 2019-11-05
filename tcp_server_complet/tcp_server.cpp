@@ -1,7 +1,7 @@
 #include "tcp_server.hpp"
 
 //server constructor
-server::server(boost::asio::io_service& io_service, short port, const std::string &address) : _io_service(io_service), _acceptor(io_service, tcp::endpoint(boost::asio::ip::address::from_string(address), port))
+server::server(boost::asio::io_service &io_service, short port, const std::string &address) : _io_service(io_service), _acceptor(io_service, tcp::endpoint(boost::asio::ip::address::from_string(address), port))
 {
     accept();
 }
@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
         ios.run();
     }
     catch (std::exception &e) {
-        std::cerr << "error: " << e.what() << "\n";
+        std::cerr << "error: " << e.what() << std::endl;
     }
     return 0;
 }
